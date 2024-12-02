@@ -53,7 +53,7 @@ def getTemp(t, mode):
             temps[3] = t
             temps[4] = (t - 491.67) * 11 / 60
             temps[5] = (t - 491.67) * 7 / 24 + 7.5
-            temps[6] = ((t * 5 / 9) + 273.15) * 4 / 5
+            temps[6] = (t - 491.67) * 4 / 9
             temps[7] = (671.67 - t) * 5 / 6
         case 4:
             temps[0] = t * 100 / 33
@@ -68,7 +68,7 @@ def getTemp(t, mode):
             temps[0] = (t - 7.5) * 40 / 21
             temps[1] = ((t - 7.5) * 24 / 7) + 32
             temps[2] = ((t - 7.5) * 40 / 21) + 273.15
-            temps[3] = ((t - 7.5) * 24 / 4) + 491.67
+            temps[3] = ((t - 7.5) * 24 / 7) + 491.67
             temps[4] = (t - 7.5) * 22 / 35
             temps[5] = t
             temps[6] = (t - 7.5) * 32 / 21
@@ -77,7 +77,7 @@ def getTemp(t, mode):
             temps[0] = t * 5 / 4
             temps[1] = (t * 9 / 4) + 32
             temps[2] = (t * 5 / 4) + 273.15
-            temps[3] = ((t * 5 / 4) - 273.15)  * 9 / 5 
+            temps[3] = (t * 9 / 4) + 491.67
             temps[4] = t * 33 / 80
             temps[5] = (t * 21 / 32) + 7.5
             temps[6] = t
@@ -122,24 +122,24 @@ class Widget(QWidget):
         self.ui.pushButton_8.clicked.connect(lambda x: self.copyTemp(7))
     
     def copyTemp(self, *args):
-        if 0 <= args[0] <= 7:
+        if 0 <= args[0] <= 8:
             temp = str(self.temps[args[0]])
             match args[0]:
                 case 0:
                     temp += '°C'
-                case 0:
+                case 1:
                     temp += '°F'
-                case 0:
+                case 2:
                     temp += 'K'
-                case 0:
+                case 3:
                     temp += 'R'
-                case 0:
+                case 4:
                     temp += '°N'
-                case 0:
+                case 5:
                     temp += '°Rø'
-                case 0:
+                case 6:
                     temp += '°Re'
-                case 0:
+                case 7:
                     temp += '°De'
             self.noty.message = temp
             xclip.paste()
