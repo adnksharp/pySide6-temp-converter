@@ -28,4 +28,11 @@ pip install -r requirements.txt
 ### Extra
 La interfaz permite copiar la temperatura al portapapeles (con pyperclip) mostrando una notificación de esto (usando notifypy)
 
+### En proceso
+
+> [!WARNING]
+> Unidades delisles no verificadas
+
+> [!TIP]
+> Agregar colores
 
